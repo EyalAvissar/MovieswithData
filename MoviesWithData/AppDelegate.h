@@ -1,19 +1,15 @@
 //
 //  AppDelegate.h
-//  MoviesWithData
+//  Base-objectiveC
 //
-//  Created by inmanage on 07/11/2021.
+//  Created by Omer Cohen on 19/10/2021.
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (readonly, strong) NSPersistentContainer *persistentContainer;
-
-- (void)saveContext;
-
+@property (strong, nonatomic) UIWindow * window;
 
 @end
 

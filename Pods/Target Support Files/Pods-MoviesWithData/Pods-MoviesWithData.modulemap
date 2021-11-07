@@ -1,0 +1,6 @@
+framework module Pods_MoviesWithData {
+  umbrella header "Pods-MoviesWithData-umbrella.h"
+
+  export *
+  module * { export * }
+}
