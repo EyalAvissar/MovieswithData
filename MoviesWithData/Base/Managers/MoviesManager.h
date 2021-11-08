@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSArray *moviesArray;
 @property NSDictionary *moviesDictionary;
 @property NSDictionary *cinemasDictionary;
+@property NSString *lastMoviesUpdate;
+@property NSString *lastCinemasUpdate;
 
 -(NSMutableArray *)sortMoviesByCategory:(NSString *) category;
 -(NSMutableArray *)sortBy:(NSString *)title arrayToSort: (NSArray *) array;

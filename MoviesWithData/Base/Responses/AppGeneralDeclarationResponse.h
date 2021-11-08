@@ -19,7 +19,7 @@
 @property Boolean isBannerToAppear;
 //Banner properties
 
-@property NSString *moviesLastUpdate;
-@property NSString *cinemasLastUpdate;
+//@property NSString *moviesLastUpdate;
+//@property NSString *cinemasLastUpdate;
 
 @end

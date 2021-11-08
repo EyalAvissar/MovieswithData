@@ -1,4 +1,4 @@
- //
+//
 //  StartUpManager.m
 //  MoviesStartProject
 //
@@ -19,6 +19,7 @@
 #import "ApplicationManager.h"
 #import "Constants.h"
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 #import "BannerViewController.h"
 
 static StartUpManager *_sharedInstance = nil;
@@ -26,11 +27,8 @@ static StartUpManager *_sharedInstance = nil;
 @interface StartUpManager ()
 {
     NSString *token;
-    NSString *moviesUpdate;
-    NSString *cinemasUpdate;
-    NSString *defaultsMoviesUpdate;
-    NSString *defaultsCinemasUpdate;
     NSString *baseUrl;
+    UIManagedDocument *document;
 }
 @end
 
@@ -46,7 +44,7 @@ static StartUpManager *_sharedInstance = nil;
 }
 
 - (void)start {
-//    [self removeUserDefaults];
+        [self removeUserDefaults];
     self.inProcess = YES;
     [self getHostUrlRequest];
     
@@ -97,6 +95,7 @@ static StartUpManager *_sharedInstance = nil;
 -(void)movies {
     MoviesRequest *moviesRequest = [[MoviesRequest alloc] initWithCallerObject:self andParams:nil];
     [[ApplicationManager sharedInstance].requestManager sendRequestForRequest:moviesRequest];
+    
 }
 
 -(void)cinemas {
@@ -116,10 +115,7 @@ static StartUpManager *_sharedInstance = nil;
 - (void)serverRequestFailed:(BaseServerRequestResponse *)baseResponse baseRequest:(BaseRequest *)baseRequest {
 }
 
-
-
 - (void)callNextRequest:(BaseServerRequestResponse *)baseResponse {
-    
     
     if ([baseResponse.methodName isEqual: mGetHostUrl]) {
         baseUrl = ((GetHostUrlResponse *) baseResponse).hostURL;
@@ -136,7 +132,7 @@ static StartUpManager *_sharedInstance = nil;
         [ApplicationManager sharedInstance].requestManager.strApplicationToken = ((ApplicationTokenResponse*)baseResponse).strApplicationToken;
         
         token = [ApplicationManager sharedInstance].requestManager.strApplicationToken;
-
+        
         //since token is not part of my calls parameters, pretend it is by checking that it exists.
         
         if (token) {
@@ -153,42 +149,112 @@ static StartUpManager *_sharedInstance = nil;
             NSLog(@"invalid version!");
             token = nil;
         }
-        
     }
     else if ([baseResponse.methodName isEqual: mValidateVersion] && token) {
-
         [self generalDeclaration];
     }
     else if ([baseResponse.methodName isEqual:mGeneralDeclaration] && token) {
-        unsigned long container = [[ApplicationManager sharedInstance].appGD moviesLastUpdate];
-        moviesUpdate = [NSString stringWithFormat:@"%ul", container];
-        
-        container = [[ApplicationManager sharedInstance].appGD cinemasLastUpdate];
-        cinemasUpdate = [NSString stringWithFormat:@"%ul", container];
-        NSLog(@"updates %@, %@",moviesUpdate, cinemasUpdate);
-        NSLog(@"");
-        
-        defaultsMoviesUpdate = [[NSUserDefaults standardUserDefaults] objectForKey:@"moviesUpdate"];
-        defaultsCinemasUpdate = [[NSUserDefaults standardUserDefaults] objectForKey:@"cinemasUpdate"];
-        
-        NSLog(@"%@, %@", defaultsMoviesUpdate, defaultsCinemasUpdate);
-        NSLog(@"");
-        
-        NSLog(@"updates %@",defaultsMoviesUpdate, moviesUpdate);
-        NSLog(@"");
-        
-        if (![defaultsMoviesUpdate isEqualToString:moviesUpdate]) {
-            [[NSUserDefaults standardUserDefaults] setObject:moviesUpdate forKey:@"moviesUpdate"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            [self movies];
-        }
+        [self movies];
     }
     else if ([baseResponse.methodName isEqual: mGetMovies] && token) {
-        if (![defaultsCinemasUpdate isEqualToString:cinemasUpdate]) {
-            [[NSUserDefaults standardUserDefaults] setObject:cinemasUpdate forKey:@"cinemasUpdate"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            [self cinemas];
+        [self prepareDataBaseFile];
+        [self cinemas];
+    }
+}
+
+- (void)prepareDataBaseFile {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *documentName = @"moviesList";
+    
+    NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+    
+    NSURL *url = [documentsDirectory URLByAppendingPathComponent:documentName];
+    
+    NSLog(@"%@",url);
+    
+    document = [[UIManagedDocument alloc] initWithFileURL:url];
+    
+    bool fileExistsAtPath = [[NSFileManager defaultManager] fileExistsAtPath:[url path]];
+    
+    if(fileExistsAtPath) {
+        [document openWithCompletionHandler:^(BOOL success) {
+            if (success) {
+                if ([[ApplicationManager sharedInstance].movieManager moviesArray]) {
+                    [self documentIsReady];
+                }
+                else {
+                    [self getMoviesFromDataBase];
+                }
+            }
+            else {
+                NSLog(@"failed to open file");
+            }
+        }];
+    }
+    else {
+        [document saveToURL:url forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+            if (success) {
+                [self documentIsReady];
+            }
+            else {
+                NSLog(@"Could not create file at the given url");
+            }
+        }];
+    }
+}
+
+- (NSArray *)getMovies {
+    NSManagedObjectContext *context = document.managedObjectContext;
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"MovieEntity"];
+    
+    NSArray *results = [context executeFetchRequest:request error:nil];
+    return results;
+}
+
+-(void)getMoviesFromDataBase {
+    if (document.documentState == UIDocumentStateNormal) {
+        NSArray * results = [self getMovies];
+        
+        NSLog(@"results count %lu", results.count);
+        NSMutableArray *moviesArray = [[NSMutableArray alloc] init];
+        NSMutableDictionary *moviesDictionary = [[NSMutableDictionary alloc] init];
+        
+        for (int index = 0; index < results.count; ++index) {
+            Movie *movie = [Movie new];
+            movie.name = [results[index] valueForKey:@"name"];
+            movie.category = [results[index] valueForKey:@"category"];
+            movie.movieId = [results[index] valueForKey:@"movieId"];
+            movie.cinemasId = [results[index] valueForKey:@"cinemasId"];
+            movie.year = [results[index] valueForKey:@"year"];
+            
+            [moviesArray addObject:movie];
+            [moviesDictionary setValue:movie forKey:movie.name];
         }
+        
+        [[ApplicationManager sharedInstance].movieManager setMoviesArray:moviesArray];
+        [[ApplicationManager sharedInstance].movieManager setMoviesDictionary:moviesDictionary];
+    }
+}
+
+-(void)documentIsReady {
+    if (document.documentState == UIDocumentStateNormal) {
+        NSManagedObjectContext *context = document.managedObjectContext;
+        
+        for (Movie *received in [[ApplicationManager sharedInstance].movieManager moviesArray]) {
+            
+            NSManagedObject *movie = [NSEntityDescription insertNewObjectForEntityForName:@"MovieEntity" inManagedObjectContext:context];
+            
+            [movie setValue:received.name forKey:@"name"];
+            [movie setValue:received.category forKey:@"category"];
+            [movie setValue:received.movieId forKey:@"movieId"];
+            [movie setValue:received.cinemasId forKey:@"cinemasId"];
+            [movie setValue:received.year forKey:@"year"];
+        }
+        
+    } else {
+        NSLog(@"not ready %lu", document.documentState);
     }
 }
 

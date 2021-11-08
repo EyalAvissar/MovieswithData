@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *category;
 @property (nonatomic, strong) NSArray *cinemasId;
-@property (nonatomic, strong) NSNumber *movieId;
+@property (nonatomic, strong) NSString
+*movieId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *year;
 @property NSNumber *rating;

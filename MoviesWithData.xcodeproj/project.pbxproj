@@ -12,7 +12,6 @@
 		4B225F4C989EF947621044AF /* Pods_MoviesWithDataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4977DF4D341EB2357AD4FD14 /* Pods_MoviesWithDataTests.framework */; };
 		E8E27D5D2737D3D800609927 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D5C2737D3D800609927 /* AppDelegate.m */; };
 		E8E27D602737D3D800609927 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D5F2737D3D800609927 /* SceneDelegate.m */; };
-		E8E27D692737D3D800609927 /* MoviesWithData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D672737D3D800609927 /* MoviesWithData.xcdatamodeld */; };
 		E8E27D6B2737D3DA00609927 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8E27D6A2737D3DA00609927 /* Assets.xcassets */; };
 		E8E27D712737D3DA00609927 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D702737D3DA00609927 /* main.m */; };
 		E8E27D7B2737D3DA00609927 /* MoviesWithDataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D7A2737D3DA00609927 /* MoviesWithDataTests.m */; };
@@ -63,6 +62,7 @@
 		E8E27E222737DA9900609927 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27DF32737DA9800609927 /* MoviesViewController.m */; };
 		E8E27E232737DA9900609927 /* CinemaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27DF52737DA9800609927 /* CinemaCollectionViewCell.m */; };
 		E8E27E272737DAC200609927 /* IMAbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27E252737DAC200609927 /* IMAbstractViewController.m */; };
+		E8E27E2F273801B600609927 /* MoviesWithData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D672737D3D800609927 /* MoviesWithData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,18 +323,18 @@
 		E8E27D9D2737DA9800609927 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				E8E27D9E2737DA9800609927 /* RequestManager.m */,
-				E8E27D9F2737DA9800609927 /* BaseManager.m */,
-				E8E27DA02737DA9800609927 /* ImageRequestManager.m */,
-				E8E27DA12737DA9800609927 /* MoviesManager.m */,
 				E8E27DA22737DA9800609927 /* ApplicationManager.h */,
-				E8E27DA32737DA9800609927 /* StartUpManager.h */,
-				E8E27DA42737DA9800609927 /* RequestManager.h */,
-				E8E27DA52737DA9800609927 /* BaseManager.h */,
-				E8E27DA62737DA9800609927 /* ImageRequestManager.h */,
-				E8E27DA72737DA9800609927 /* StartUpManager.m */,
 				E8E27DA82737DA9800609927 /* ApplicationManager.m */,
+				E8E27DA52737DA9800609927 /* BaseManager.h */,
+				E8E27D9F2737DA9800609927 /* BaseManager.m */,
+				E8E27DA62737DA9800609927 /* ImageRequestManager.h */,
+				E8E27DA02737DA9800609927 /* ImageRequestManager.m */,
 				E8E27DA92737DA9800609927 /* MoviesManager.h */,
+				E8E27DA12737DA9800609927 /* MoviesManager.m */,
+				E8E27DA42737DA9800609927 /* RequestManager.h */,
+				E8E27D9E2737DA9800609927 /* RequestManager.m */,
+				E8E27DA32737DA9800609927 /* StartUpManager.h */,
+				E8E27DA72737DA9800609927 /* StartUpManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -342,33 +342,33 @@
 		E8E27DAA2737DA9800609927 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				E8E27DAB2737DA9800609927 /* ClearSessionResponse.m */,
-				E8E27DAC2737DA9800609927 /* FullMovieResponse.m */,
+				E8E27DC32737DA9800609927 /* AppGeneralDeclarationResponse.h */,
+				E8E27DB72737DA9800609927 /* AppGeneralDeclarationResponse.m */,
+				E8E27DB52737DA9800609927 /* ApplicationTokenResponse.h */,
+				E8E27DC52737DA9800609927 /* ApplicationTokenResponse.m */,
+				E8E27DBB2737DA9800609927 /* BaseGeneralDeclarationResponse.h */,
 				E8E27DAD2737DA9800609927 /* BaseGeneralDeclarationResponse.m */,
+				E8E27DBE2737DA9800609927 /* BaseResponse.h */,
+				E8E27DB12737DA9800609927 /* BaseResponse.m */,
+				E8E27DB32737DA9800609927 /* BaseServerRequestResponse.h */,
+				E8E27DBC2737DA9800609927 /* BaseServerRequestResponse.m */,
+				E8E27DBF2737DA9800609927 /* CinemasResponse.h */,
+				E8E27DB02737DA9800609927 /* CinemasResponse.m */,
+				E8E27DBA2737DA9800609927 /* ClearSessionResponse.h */,
+				E8E27DAB2737DA9800609927 /* ClearSessionResponse.m */,
+				E8E27DB92737DA9800609927 /* FullMovieResponse.h */,
+				E8E27DAC2737DA9800609927 /* FullMovieResponse.m */,
+				E8E27DC22737DA9800609927 /* GeneralDeclarationResponse.h */,
+				E8E27DB82737DA9800609927 /* GeneralDeclarationResponse.m */,
+				E8E27DC02737DA9800609927 /* GetHostUrlResponse.h */,
 				E8E27DAE2737DA9800609927 /* GetHostUrlResponse.m */,
 				E8E27DAF2737DA9800609927 /* MovieImageResponse.h */,
-				E8E27DB02737DA9800609927 /* CinemasResponse.m */,
-				E8E27DB12737DA9800609927 /* BaseResponse.m */,
-				E8E27DB22737DA9800609927 /* SetSettingsResponse.h */,
-				E8E27DB32737DA9800609927 /* BaseServerRequestResponse.h */,
-				E8E27DB42737DA9800609927 /* ValidateVersionResponse.h */,
-				E8E27DB52737DA9800609927 /* ApplicationTokenResponse.h */,
-				E8E27DB62737DA9800609927 /* MoviesResponse.m */,
-				E8E27DB72737DA9800609927 /* AppGeneralDeclarationResponse.m */,
-				E8E27DB82737DA9800609927 /* GeneralDeclarationResponse.m */,
-				E8E27DB92737DA9800609927 /* FullMovieResponse.h */,
-				E8E27DBA2737DA9800609927 /* ClearSessionResponse.h */,
-				E8E27DBB2737DA9800609927 /* BaseGeneralDeclarationResponse.h */,
-				E8E27DBC2737DA9800609927 /* BaseServerRequestResponse.m */,
-				E8E27DBD2737DA9800609927 /* SetSettingsResponse.m */,
-				E8E27DBE2737DA9800609927 /* BaseResponse.h */,
-				E8E27DBF2737DA9800609927 /* CinemasResponse.h */,
-				E8E27DC02737DA9800609927 /* GetHostUrlResponse.h */,
 				E8E27DC12737DA9800609927 /* MovieImageResponse.m */,
-				E8E27DC22737DA9800609927 /* GeneralDeclarationResponse.h */,
-				E8E27DC32737DA9800609927 /* AppGeneralDeclarationResponse.h */,
 				E8E27DC42737DA9800609927 /* MoviesResponse.h */,
-				E8E27DC52737DA9800609927 /* ApplicationTokenResponse.m */,
+				E8E27DB62737DA9800609927 /* MoviesResponse.m */,
+				E8E27DB22737DA9800609927 /* SetSettingsResponse.h */,
+				E8E27DBD2737DA9800609927 /* SetSettingsResponse.m */,
+				E8E27DB42737DA9800609927 /* ValidateVersionResponse.h */,
 				E8E27DC62737DA9800609927 /* ValidateVersionResponse.m */,
 			);
 			path = Responses;
@@ -377,9 +377,9 @@
 		E8E27DC72737DA9800609927 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E8E27DCA2737DA9800609927 /* Cinema.h */,
 				E8E27DC82737DA9800609927 /* Cinema.m */,
 				E8E27DC92737DA9800609927 /* Movie.h */,
-				E8E27DCA2737DA9800609927 /* Cinema.h */,
 				E8E27DCB2737DA9800609927 /* Movie.m */,
 			);
 			path = Models;
@@ -703,6 +703,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8E27E2F273801B600609927 /* MoviesWithData.xcdatamodeld in Sources */,
 				E8E27E092737DA9900609927 /* BaseServerRequestResponse.m in Sources */,
 				E8E27E0E2737DA9900609927 /* Cinema.m in Sources */,
 				E8E27E022737DA9900609927 /* BaseGeneralDeclarationResponse.m in Sources */,
@@ -724,7 +725,6 @@
 				E8E27E062737DA9900609927 /* MoviesResponse.m in Sources */,
 				E8E27D712737D3DA00609927 /* main.m in Sources */,
 				E8E27DFF2737DA9900609927 /* ApplicationManager.m in Sources */,
-				E8E27D692737D3D800609927 /* MoviesWithData.xcdatamodeld in Sources */,
 				E8E27E1F2737DA9900609927 /* DetailViewController.m in Sources */,
 				E8E27DFE2737DA9900609927 /* StartUpManager.m in Sources */,
 				E8E27D5D2737D3D800609927 /* AppDelegate.m in Sources */,

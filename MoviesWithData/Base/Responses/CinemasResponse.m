@@ -15,9 +15,7 @@
     NSMutableDictionary *cinemaDictionary = [[NSMutableDictionary alloc] init];
     
     for (NSDictionary *jsonCinema in JSON[@"cinemas"]) {
-//        for (id key in jsonCinema) {
-//            NSLog(@"%@", [key class]);
-//        }
+
         Cinema *cinema = [Cinema new];
         cinema.name = jsonCinema[@"name"];
         cinema.cinemaId = jsonCinema[@"id"];
@@ -26,10 +24,7 @@
     }
 
     [[ApplicationManager sharedInstance].movieManager setCinemasDictionary:cinemaDictionary];
-    
-    
-    
-    
+    [[ApplicationManager sharedInstance].movieManager setLastCinemasUpdate:JSON[@"cinemas_last_update"]];
 }
 
 @end

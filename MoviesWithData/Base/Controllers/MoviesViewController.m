@@ -31,6 +31,8 @@ static NSString *identifier;
     partialMoviesArray = [NSMutableArray arrayWithArray:moviesArray];
     identifier = @"movieCell";
     [self.moviesTable registerNib:[UINib nibWithNibName:@"MovieTableCell" bundle:nil] forCellReuseIdentifier:identifier];
+    
+    
 }
 
 #pragma mark - tableView datasource methods
@@ -63,29 +65,11 @@ static NSString *identifier;
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DetailViewController *detailController = [storyBoard instantiateViewControllerWithIdentifier:@"detailController"];
     
-    detailController.movieId = selectedMovie.movieId;
+    detailController.movieId = [NSString stringWithFormat:@"%@", selectedMovie.movieId];
     
     [self.navigationController pushViewController:detailController animated:true];
 }
 
-#pragma mark - Navigation
-
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    NSIndexPath *selectedIndex = [self.moviesTable indexPathForSelectedRow];
-//
-//    if ([segue.identifier isEqualToString:@"showMovieDetails"]) {
-//        Movie *selectedMovie = partialMoviesArray[selectedIndex.row];
-//
-////        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        DetailViewController *detailController = segue.destinationViewController;
-//        detailController.movie = selectedMovie;
-//        NSLog(@"chosen movie %@", selectedMovie.name);
-//        NSLog(@"detail's movie %@", detailController.movie.name);
-//        NSLog(@"");
-//    }
-//
-//}
 
 #pragma mark - Sort Movies Methods
 
