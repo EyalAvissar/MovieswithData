@@ -44,7 +44,7 @@ static StartUpManager *_sharedInstance = nil;
 }
 
 - (void)start {
-        [self removeUserDefaults];
+//        [self removeUserDefaults];
     self.inProcess = YES;
     [self getHostUrlRequest];
     
@@ -220,7 +220,6 @@ static StartUpManager *_sharedInstance = nil;
         NSLog(@"results count %lu", results.count);
         NSMutableArray *moviesArray = [[NSMutableArray alloc] init];
         NSMutableDictionary *moviesDictionary = [[NSMutableDictionary alloc] init];
-        
         for (int index = 0; index < results.count; ++index) {
             Movie *movie = [Movie new];
             movie.name = [results[index] valueForKey:@"name"];
@@ -228,9 +227,15 @@ static StartUpManager *_sharedInstance = nil;
             movie.movieId = [results[index] valueForKey:@"movieId"];
             movie.cinemasId = [results[index] valueForKey:@"cinemasId"];
             movie.year = [results[index] valueForKey:@"year"];
+            movie.imageUrl = [results[index] valueForKey:@"imageUrl"];
+            NSData *data = [results[index] valueForKey:@"moviePoster"];
+            movie.moviePoster = [UIImage imageWithData:data];
+            movie.rating = [results[index] valueForKey:@"rating"];
+            movie.promoUrl = [results[index] valueForKey:@"promoUrl"];
+            movie.movieDescription = [results[index] valueForKey:@"promoUrl"];
             
             [moviesArray addObject:movie];
-            [moviesDictionary setValue:movie forKey:movie.name];
+            [moviesDictionary setValue:movie forKey:movie.movieId];
         }
         
         [[ApplicationManager sharedInstance].movieManager setMoviesArray:moviesArray];
@@ -240,12 +245,14 @@ static StartUpManager *_sharedInstance = nil;
 
 -(void)documentIsReady {
     if (document.documentState == UIDocumentStateNormal) {
+        NSLog(@"queue2 %@",[NSOperationQueue currentQueue]);
+
         NSManagedObjectContext *context = document.managedObjectContext;
         
         for (Movie *received in [[ApplicationManager sharedInstance].movieManager moviesArray]) {
             
             NSManagedObject *movie = [NSEntityDescription insertNewObjectForEntityForName:@"MovieEntity" inManagedObjectContext:context];
-            
+           
             [movie setValue:received.name forKey:@"name"];
             [movie setValue:received.category forKey:@"category"];
             [movie setValue:received.movieId forKey:@"movieId"];

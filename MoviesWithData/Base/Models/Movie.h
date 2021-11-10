@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 *movieId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *year;
-@property NSNumber *rating;
+@property NSString *rating;
 @property NSString *promoUrl;
 @property NSString *imageUrl;
 @property NSString *movieDescription;

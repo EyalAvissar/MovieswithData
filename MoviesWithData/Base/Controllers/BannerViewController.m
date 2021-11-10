@@ -21,7 +21,7 @@
     
     NSString *bannerUrlStr = [[ApplicationManager sharedInstance].appGD bannerImageUrl];
     
-    [[[ApplicationManager sharedInstance] imageRequestManger] imageRequest:bannerUrlStr onCompletion:^(NSData * _Nonnull data) {
+    [[[ApplicationManager sharedInstance] imageRequestManager] imageRequest:bannerUrlStr onCompletion:^(NSData * _Nonnull data) {
         
         UIImage *bannerImage = [UIImage imageWithData:data];
         

@@ -10,6 +10,7 @@
 #import "MovieImageRequest.h"
 #import "ApplicationManager.h"
 #import "CinemaCollectionViewCell.h"
+#import <CoreData/CoreData.h>
 
 @interface DetailViewController ()
 {
@@ -22,6 +23,47 @@
 @end
 
 @implementation DetailViewController
+
+- (void)setMovieEntity:(NSData *)data {
+    
+    NSURL *url = [[ApplicationManager sharedInstance].movieManager getUrl];
+    UIManagedDocument *document = [[UIManagedDocument alloc] initWithFileURL:url];
+    
+    [document openWithCompletionHandler:^(BOOL success) {
+        
+        if (success) {
+            if (document.documentState == UIDocumentStateNormal) {
+                NSManagedObjectContext *context = document.managedObjectContext;
+                NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"MovieEntity"];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"movieId == %@", self->movie.movieId];
+                
+                [request setPredicate:predicate];
+                
+                NSArray *results = [context executeFetchRequest:request error:nil];
+                                
+                NSManagedObject* movies = [results objectAtIndex:0];
+                
+                [movies setValue:self->movie.rating forKey:@"rating"];
+                [movies setValue:self->movie.movieDescription forKey:@"movieDescription"];
+                [movies setValue:self->movie.promoUrl forKey:@"promoUrl"];
+                [movies setValue:data forKey:@"moviePoster"];
+                
+                if ([movies valueForKey:@"moviePoster"] == nil) {
+                    [movies setValue:self->movie.imageUrl forKey:@"imageUrl"];
+                    NSLog(@"now: %@",[movies valueForKey:@"imageUrl"]);
+                    
+                } else {
+                    NSLog(@"saved %@",[movies valueForKey:@"promoUrl"]);
+                    NSLog(@"saved %@",[movies valueForKey:@"movieDescription"]);
+                    
+                }
+                
+            }
+            
+        }
+        
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,8 +80,13 @@
     self.yearLabel.text = [NSString stringWithFormat:@"year: %@", movie.year];
     self.categoryLabel.text = movie.category;
     
-    [self movieDescription];
-    
+    if (![movie moviePoster]) {
+        [self movieDescription];
+    }
+    else {
+        self.movieImageView.image = movie.moviePoster;
+        [self partialFieldsSet];
+    }
 }
 
 -(void)movieDescription {
@@ -47,34 +94,35 @@
     [[ApplicationManager sharedInstance].requestManager sendRequestForRequest:fullMoviesRequest];
 }
 
+- (void)partialFieldsSet {
+    self.descriptionTextView.text = movie.movieDescription;
+    self.ratingLabel.text = movie.rating;
+    [self.promoURL setTitle:movie.promoUrl forState:UIControlStateNormal];
+}
 
 - (void)setReceivedMovieFields {
     NSLog(@"");
     
-    self.descriptionTextView.text = movie.movieDescription;
+    [self partialFieldsSet];
     
-    moviePosterUrl = movie.imageUrl;
-    
-    [self.promoURL setTitle:movie.promoUrl forState:UIControlStateNormal];
-    
-    [[[ApplicationManager sharedInstance] imageRequestManger] imageRequest:moviePosterUrl onCompletion:^(NSData * _Nonnull data) {
+    [[[ApplicationManager sharedInstance] imageRequestManager] imageRequest:moviePosterUrl onCompletion:^(NSData * _Nonnull data) {
         
         UIImage *posterImage = [UIImage imageWithData:data];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSString *rating = [self->movie.rating description];
-            self.ratingLabel.text = rating;
+            self.ratingLabel.text = self->movie.rating;
             self->movie.moviePoster = posterImage;
             self.movieImageView.image = posterImage;
+            [self setMovieEntity:data];
         });
+        
     }];
-    
-    
 }
 
 #pragma mark - ServerRequestDoneProtocol Methods
 
 - (void)serverRequestSucceed:(BaseServerRequestResponse *)baseResponse baseRequest:(BaseRequest *)baseRequest {
+    
     [self setReceivedMovieFields];
 }
 

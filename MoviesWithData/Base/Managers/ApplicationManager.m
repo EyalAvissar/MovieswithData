@@ -19,7 +19,7 @@ static ApplicationManager *_sharedInstance = nil;
         _sharedInstance.requestManager = [RequestManager sharedInstance];
         _sharedInstance.appGD = [AppGeneralDeclarationResponse new];
         _sharedInstance.movieManager = [MoviesManager sharedInstance];
-        _sharedInstance.imageRequestManger = [ImageRequestManager sharedInstance];
+        _sharedInstance.imageRequestManager = [ImageRequestManager sharedInstance];
     }
     
     return _sharedInstance;

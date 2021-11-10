@@ -10,6 +10,7 @@
 		074033CB540141AE102BBC4C /* Pods_MoviesWithData_MoviesWithDataUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82F661803479E9F0DF067DF /* Pods_MoviesWithData_MoviesWithDataUITests.framework */; };
 		24254E79DE63DCE4CEC380B5 /* Pods_MoviesWithData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFE06388795A811C31FE4446 /* Pods_MoviesWithData.framework */; };
 		4B225F4C989EF947621044AF /* Pods_MoviesWithDataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4977DF4D341EB2357AD4FD14 /* Pods_MoviesWithDataTests.framework */; };
+		E80FFCEC273BD8C9006CB418 /* MovieHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E80FFCEB273BD8C9006CB418 /* MovieHelper.m */; };
 		E8E27D5D2737D3D800609927 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D5C2737D3D800609927 /* AppDelegate.m */; };
 		E8E27D602737D3D800609927 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D5F2737D3D800609927 /* SceneDelegate.m */; };
 		E8E27D6B2737D3DA00609927 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8E27D6A2737D3DA00609927 /* Assets.xcassets */; };
@@ -91,6 +92,8 @@
 		B994CD308F99D3DD12345F73 /* Pods-MoviesWithData-MoviesWithDataUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesWithData-MoviesWithDataUITests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesWithData-MoviesWithDataUITests/Pods-MoviesWithData-MoviesWithDataUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C6F709126B444DE99202300D /* Pods-MoviesWithDataTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesWithDataTests.release.xcconfig"; path = "Target Support Files/Pods-MoviesWithDataTests/Pods-MoviesWithDataTests.release.xcconfig"; sourceTree = "<group>"; };
 		C82F661803479E9F0DF067DF /* Pods_MoviesWithData_MoviesWithDataUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesWithData_MoviesWithDataUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E80FFCEA273BD8C9006CB418 /* MovieHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieHelper.h; sourceTree = "<group>"; };
+		E80FFCEB273BD8C9006CB418 /* MovieHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieHelper.m; sourceTree = "<group>"; };
 		E8E27D582737D3D800609927 /* MoviesWithData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesWithData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E27D5B2737D3D800609927 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E8E27D5C2737D3D800609927 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -419,6 +422,8 @@
 			children = (
 				E8E27DE42737DA9800609927 /* ParseValidator.h */,
 				E8E27DE52737DA9800609927 /* ParseValidator.m */,
+				E80FFCEA273BD8C9006CB418 /* MovieHelper.h */,
+				E80FFCEB273BD8C9006CB418 /* MovieHelper.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -741,6 +746,7 @@
 				E8E27E1A2737DA9900609927 /* GetHostUrlRequest.m in Sources */,
 				E8E27E0A2737DA9900609927 /* SetSettingsResponse.m in Sources */,
 				E8E27E102737DA9900609927 /* SetSettingsRequest.m in Sources */,
+				E80FFCEC273BD8C9006CB418 /* MovieHelper.m in Sources */,
 				E8E27E212737DA9900609927 /* MovieTableCell.m in Sources */,
 				E8E27E072737DA9900609927 /* AppGeneralDeclarationResponse.m in Sources */,
 				E8E27E1C2737DA9900609927 /* LoadingViewController.m in Sources */,

@@ -93,9 +93,8 @@ static const NSTimeInterval methodTimeout = 1.5;
         if ([baseRequest.getMethodName isEqual: mDescriptionMovies]) {
             NSNumber *movieId = [(DetailViewController *)(baseRequest.callerObject) movieId];
             
-            Movie *movie = [[[ApplicationManager sharedInstance].movieManager moviesDictionary] objectForKey:movieId];
             
-            extractedExpr = [NSString stringWithFormat:@"%@%@/%@.json",baseUrl, baseRequest.getMethodName,movie.movieId];
+            extractedExpr = [NSString stringWithFormat:@"%@%@/%@.json",baseUrl, baseRequest.getMethodName, movieId];
         }
         else {
             extractedExpr = [NSString stringWithFormat:@"%@%@.json",baseUrl, baseRequest.getMethodName];

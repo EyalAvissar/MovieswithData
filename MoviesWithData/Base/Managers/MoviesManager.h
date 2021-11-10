@@ -13,15 +13,23 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MoviesManager : BaseRequest
 
 +(MoviesManager *)sharedInstance;
++(UIManagedDocument *)prepareUIManagedDocumentFor:(NSURL *)url;
 
 @property NSArray *moviesArray;
 @property NSDictionary *moviesDictionary;
 @property NSDictionary *cinemasDictionary;
 @property NSString *lastMoviesUpdate;
 @property NSString *lastCinemasUpdate;
+@property UIManagedDocument *document;
+@property NSArray *queryResults;
 
 -(NSMutableArray *)sortMoviesByCategory:(NSString *) category;
 -(NSMutableArray *)sortBy:(NSString *)title arrayToSort: (NSArray *) array;
+-(void)saveMoviesToDataBaseFileAndMovieManager;
+-(void)setMoviesQueryResults:(nullable NSString *) movieId;
+-(void)InsertMoviesFromDataBaseToMovieManager;
+-(void)documentIsReady;
+-(NSURL *)getUrl;
 
 @end
 

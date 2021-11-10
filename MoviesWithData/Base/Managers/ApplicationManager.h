@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) MoviesManager *movieManager;
 
-@property (strong, nonatomic) ImageRequestManager *imageRequestManger;
+@property (strong, nonatomic) ImageRequestManager *imageRequestManager;
 
 @end
 
