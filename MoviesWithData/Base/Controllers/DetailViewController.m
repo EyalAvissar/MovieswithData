@@ -48,15 +48,15 @@
                 [movies setValue:self->movie.promoUrl forKey:@"promoUrl"];
                 [movies setValue:data forKey:@"moviePoster"];
                 
-                if ([movies valueForKey:@"moviePoster"] == nil) {
-                    [movies setValue:self->movie.imageUrl forKey:@"imageUrl"];
-                    NSLog(@"now: %@",[movies valueForKey:@"imageUrl"]);
-                    
-                } else {
-                    NSLog(@"saved %@",[movies valueForKey:@"promoUrl"]);
-                    NSLog(@"saved %@",[movies valueForKey:@"movieDescription"]);
-                    
-                }
+//                if ([movies valueForKey:@"moviePoster"] == nil) {
+//                    [movies setValue:self->movie.imageUrl forKey:@"imageUrl"];
+//                    NSLog(@"now: %@",[movies valueForKey:@"imageUrl"]);
+//
+//                } else {
+//                    NSLog(@"saved %@",[movies valueForKey:@"promoUrl"]);
+//                    NSLog(@"saved %@",[movies valueForKey:@"movieDescription"]);
+//
+//                }
                 
             }
             

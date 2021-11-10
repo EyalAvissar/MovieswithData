@@ -25,10 +25,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSMutableArray *)sortMoviesByCategory:(NSString *) category;
 -(NSMutableArray *)sortBy:(NSString *)title arrayToSort: (NSArray *) array;
--(void)saveMoviesToDataBaseFileAndMovieManager;
--(void)setMoviesQueryResults:(nullable NSString *) movieId;
--(void)InsertMoviesFromDataBaseToMovieManager;
--(void)documentIsReady;
 -(NSURL *)getUrl;
 
 @end

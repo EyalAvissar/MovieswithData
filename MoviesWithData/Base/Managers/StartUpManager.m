@@ -232,7 +232,7 @@ static StartUpManager *_sharedInstance = nil;
             movie.moviePoster = [UIImage imageWithData:data];
             movie.rating = [results[index] valueForKey:@"rating"];
             movie.promoUrl = [results[index] valueForKey:@"promoUrl"];
-            movie.movieDescription = [results[index] valueForKey:@"promoUrl"];
+            movie.movieDescription = [results[index] valueForKey:@"movieDescription"];
             
             [moviesArray addObject:movie];
             [moviesDictionary setValue:movie forKey:movie.movieId];

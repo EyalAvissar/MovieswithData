@@ -39,7 +39,6 @@ static NSString *identifier;
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     MovieTableCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     
@@ -60,7 +59,7 @@ static NSString *identifier;
     
     [tableView deselectRowAtIndexPath:indexPath animated:true];
     
-    Movie *selectedMovie = moviesArray[indexPath.row];
+    Movie *selectedMovie = partialMoviesArray[indexPath.row];
 
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     DetailViewController *detailController = [storyBoard instantiateViewControllerWithIdentifier:@"detailController"];
