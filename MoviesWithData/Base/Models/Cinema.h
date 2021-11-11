@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSString *cinemaId;
 @property NSString *name;
+@property NSString *latitudeStr;
+@property NSString *longitudeStr;
 
 @end
 

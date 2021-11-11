@@ -15,7 +15,7 @@
     NSMutableDictionary *cinemaDictionary = [[NSMutableDictionary alloc] init];
     
     NSString *lastCinemasUpdate = [[ApplicationManager sharedInstance].movieManager lastCinemasUpdate];
-    NSString *currentCinemasUpdate = JSON[@"cinemas_last_update"];//@"1";
+    NSString *currentCinemasUpdate =  JSON[@"cinemas_last_update"];//@"1";
 
     
     if ([lastCinemasUpdate isEqual:currentCinemasUpdate]) {
@@ -31,7 +31,9 @@
         Cinema *cinema = [Cinema new];
         cinema.name = jsonCinema[@"name"];
         cinema.cinemaId = jsonCinema[@"id"];
-        
+        cinema.latitudeStr = jsonCinema[@"lat"];
+        cinema.latitudeStr = jsonCinema[@"lng"];
+
         [cinemaDictionary setObject:cinema forKey:cinema.cinemaId];
     }
 

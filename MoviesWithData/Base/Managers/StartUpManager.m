@@ -231,7 +231,10 @@ static StartUpManager *_sharedInstance = nil;
                 
                 [cinema setValue: received.cinemaId forKey:@"cinemaId"];
                 [cinema setValue:received.name forKey:@"name"];
-                
+                [cinema setValue:received.latitudeStr forKey:@"latitudeStr"];
+                [cinema setValue:received.longitudeStr forKey:@"longitudeStr"];
+
+
                 NSLog(@"");
         }
         
@@ -257,6 +260,9 @@ static StartUpManager *_sharedInstance = nil;
             Cinema *cinema = [Cinema new];
             cinema.name = [results[index] valueForKey:@"name"];
             cinema.cinemaId = [results[index] valueForKey:@"cinemaId"];
+            cinema.latitudeStr = [results[index] valueForKey:@"latitudeStr"];
+            cinema.longitudeStr = [results[index] valueForKey:@"longitudeStr"];
+
             [cinemasDictionary setValue:cinema forKey:cinema.cinemaId];
         }
 
