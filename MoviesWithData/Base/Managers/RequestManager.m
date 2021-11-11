@@ -111,7 +111,7 @@ static const NSTimeInterval methodTimeout = 1.5;
         
         [manager GET:strPostUrl parameters:baseRequest.dictParams headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSHTTPURLResponse *reponse = (NSHTTPURLResponse *)task.response;
-//            NSLog(@"x-cache: %@ - method: strPostUrl %@", [[reponse allHeaderFields] objectForKey:@"x-cache"], strPostUrl);
+            NSLog(@"x-cache: %@ - method: strPostUrl %@", [[reponse allHeaderFields] objectForKey:@"x-cache"], strPostUrl);
             
             
             [self handleSuccess:baseRequest res:responseObject task:task];

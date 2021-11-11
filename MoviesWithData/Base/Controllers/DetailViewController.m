@@ -47,7 +47,8 @@
                 [movies setValue:self->movie.movieDescription forKey:@"movieDescription"];
                 [movies setValue:self->movie.promoUrl forKey:@"promoUrl"];
                 [movies setValue:data forKey:@"moviePoster"];
-                
+                [movies setValue:self->movie.imageUrl forKey:@"imageUrl"];
+
 //                if ([movies valueForKey:@"moviePoster"] == nil) {
 //                    [movies setValue:self->movie.imageUrl forKey:@"imageUrl"];
 //                    NSLog(@"now: %@",[movies valueForKey:@"imageUrl"]);
@@ -105,7 +106,7 @@
     
     [self partialFieldsSet];
     
-    [[[ApplicationManager sharedInstance] imageRequestManager] imageRequest:moviePosterUrl onCompletion:^(NSData * _Nonnull data) {
+    [[[ApplicationManager sharedInstance] imageRequestManager] imageRequest:movie.imageUrl onCompletion:^(NSData * _Nonnull data) {
         
         UIImage *posterImage = [UIImage imageWithData:data];
         
