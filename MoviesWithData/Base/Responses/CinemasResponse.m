@@ -9,20 +9,22 @@
 #import "ApplicationManager.h"
 #import "Cinema.h"
 
-@implementation CinemasResponse {
-    NSString *currentCinemasUpdate;
-}
+@implementation CinemasResponse
 
 -(void)parseData:(NSDictionary*)JSON{
     NSMutableDictionary *cinemaDictionary = [[NSMutableDictionary alloc] init];
     
-    [[ApplicationManager sharedInstance].movieManager setLastCinemasUpdate:JSON[@"cinemas_last_update"]];
-    currentCinemasUpdate = JSON[@"cinemas_last_update"];
+    NSString *lastCinemasUpdate = [[ApplicationManager sharedInstance].movieManager lastCinemasUpdate];
+    NSString *currentCinemasUpdate = JSON[@"cinemas_last_update"];//@"1";
 
     
-    if (![self isCinemasUpdateNeeded]) {
+    if ([lastCinemasUpdate isEqual:currentCinemasUpdate]) {
         return;
     }
+    
+    [[ApplicationManager sharedInstance].movieManager setLastCinemasUpdate:currentCinemasUpdate];
+    
+    [self cinemasUpdateNeeded];
     
     for (NSDictionary *jsonCinema in JSON[@"cinemas"]) {
 
@@ -36,25 +38,25 @@
     [[ApplicationManager sharedInstance].movieManager setCinemasDictionary:cinemaDictionary];
 }
 
--(Boolean)isCinemasUpdateNeeded {
-    NSString *userCinemasUpdate = [[NSUserDefaults standardUserDefaults] valueForKey:@"userCinemasUpdate"];
-    
-    if ([userCinemasUpdate isEqual:currentCinemasUpdate]) {
-        return false;
-    }
+-(Boolean)cinemasUpdateNeeded {
+//    NSString *userCinemasUpdate = [[NSUserDefaults standardUserDefaults] valueForKey:@"userCinemasUpdate"];
+//
+//    if ([userCinemasUpdate isEqual:currentCinemasUpdate]) {
+//        return false;
+//    }
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSString *documentName = @"cinemasList";
     
-    NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+//    NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
     
-    NSURL *url = [documentsDirectory URLByAppendingPathComponent:documentName];
+    NSURL *url = [[ApplicationManager sharedInstance].movieManager getUrl:documentName];//[documentsDirectory URLByAppendingPathComponent:documentName];
     
     [fileManager removeItemAtURL:url error:nil];
     
-    [[NSUserDefaults standardUserDefaults] setObject:currentCinemasUpdate forKey:@"userCinemasUpdate"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setObject:currentCinemasUpdate forKey:@"userCinemasUpdate"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     return true;
 }

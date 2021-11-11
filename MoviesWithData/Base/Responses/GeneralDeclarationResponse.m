@@ -20,12 +20,8 @@
     [[ApplicationManager sharedInstance].appGD setBannerVideoUrl:container];
     
     
-//    [[ApplicationManager sharedInstance].appGD setCinemasLastUpdate:JSON[@"cinemas_last_update"]];
-//    
-//
-//    [[ApplicationManager sharedInstance].appGD setMoviesLastUpdate:JSON[@"movies_last_update"]];
-//    
-//    NSLog(@"%@ %@",[[ApplicationManager sharedInstance].appGD cinemasLastUpdate], [[ApplicationManager sharedInstance].appGD moviesLastUpdate]);
+    [[ApplicationManager sharedInstance].movieManager setLastCinemasUpdate:JSON[@"cinemas_last_update"]];
+    [[ApplicationManager sharedInstance].movieManager setLastMoviesUpdate:JSON[@"movies_last_update"]];
 }
 
 @end

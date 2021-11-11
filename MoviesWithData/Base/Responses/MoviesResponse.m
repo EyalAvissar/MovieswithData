@@ -11,9 +11,7 @@
 
 
 
-@interface MoviesResponse () {
-    NSString *currentMoviesUpdate;
-}
+@interface MoviesResponse ()
 @end
 
 @implementation MoviesResponse
@@ -22,14 +20,17 @@
     
     
     NSLog(@"movies json %@",JSON[@"movies"]);
-    [[ApplicationManager sharedInstance].movieManager setLastMoviesUpdate:JSON[@"movies_last_update"]];
+    NSString * lastMoviesUpdate = [[ApplicationManager sharedInstance].movieManager lastMoviesUpdate];
     
-    currentMoviesUpdate = JSON[@"movies_last_update"];
+    NSString * currentMoviesUpdate = JSON[@"movies_last_update"]; //@"1";
     
-    if (![self isMoviesUpdateNeeded]) {
+    if ([lastMoviesUpdate isEqual:currentMoviesUpdate]) {
         return;
     }
     
+    [self moviesUpdateNeeded];
+
+    [[ApplicationManager sharedInstance].movieManager setLastMoviesUpdate:currentMoviesUpdate];
     NSArray *jsonMoviesArray = JSON[@"movies"];
     
     NSMutableDictionary *moviesDictionary = [[NSMutableDictionary alloc] init];
@@ -59,25 +60,25 @@
     
 }
 
--(Boolean)isMoviesUpdateNeeded {
-    NSString *userMoviesUpdate = [[NSUserDefaults standardUserDefaults] valueForKey:@"userMoviesUpdate"];
+-(Boolean)moviesUpdateNeeded {
+//    NSString *userMoviesUpdate = [[NSUserDefaul standardUserDefaults] valueForKey:@"userMoviesUpdate"];
     
-    if ([userMoviesUpdate isEqual:currentMoviesUpdate]) {
-        return false;
-    }
+//    if ([userMoviesUpdate isEqual:currentMoviesUpdate]) {
+//        return false;
+//    }
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
+//
+//    NSString *documentName = @"moviesList";
+//
+//    NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
     
-    NSString *documentName = @"moviesList";
-    
-    NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
-    
-    NSURL *url = [documentsDirectory URLByAppendingPathComponent:documentName];
+    NSURL *url = [[ApplicationManager sharedInstance].movieManager getUrl:@"moviesList"]; //[documentsDirectory URLByAppendingPathComponent:documentName];
     
     [fileManager removeItemAtURL:url error:nil];
     
-    [[NSUserDefaults standardUserDefaults] setObject:currentMoviesUpdate forKey:@"userMoviesUpdate"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setObject:currentMoviesUpdate forKey:@"userMoviesUpdate"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     
     return true;
 }
