@@ -50,15 +50,14 @@ static MoviesManager *_sharedInstance = nil;
     return array;
 }
 
--(NSURL *)getUrl {
+-(NSURL *)getUrl:(NSString *)documentName {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *documentName = @"moviesList";
     
     NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
     
     NSURL *url = [documentsDirectory URLByAppendingPathComponent:documentName];
     
-    NSLog(@"%@",url);
+    NSLog(@"getUrl %@",url);
     return url;
 }
 

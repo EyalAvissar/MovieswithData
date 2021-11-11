@@ -20,12 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSDictionary *cinemasDictionary;
 @property NSString *lastMoviesUpdate;
 @property NSString *lastCinemasUpdate;
-@property UIManagedDocument *document;
-@property NSArray *queryResults;
 
 -(NSMutableArray *)sortMoviesByCategory:(NSString *) category;
 -(NSMutableArray *)sortBy:(NSString *)title arrayToSort: (NSArray *) array;
--(NSURL *)getUrl;
+-(NSURL *)getUrl:(NSString *)documentName;
 
 @end
 

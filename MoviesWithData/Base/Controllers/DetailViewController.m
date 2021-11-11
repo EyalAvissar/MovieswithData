@@ -26,7 +26,7 @@
 
 - (void)setMovieEntity:(NSData *)data {
     
-    NSURL *url = [[ApplicationManager sharedInstance].movieManager getUrl];
+    NSURL *url = [[ApplicationManager sharedInstance].movieManager getUrl:@"moviesList"];
     UIManagedDocument *document = [[UIManagedDocument alloc] initWithFileURL:url];
     
     [document openWithCompletionHandler:^(BOOL success) {

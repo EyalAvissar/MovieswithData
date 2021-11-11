@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="CinemaEntity" representedClassName="CinemaEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="cinemaId" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="MovieEntity" representedClassName="MovieEntity" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="cinemasId" optional="YES" attributeType="Transformable"/>
@@ -14,5 +18,6 @@
     </entity>
     <elements>
         <element name="MovieEntity" positionX="-63" positionY="-18" width="128" height="179"/>
+        <element name="CinemaEntity" positionX="-36" positionY="90" width="128" height="14"/>
     </elements>
 </model>
