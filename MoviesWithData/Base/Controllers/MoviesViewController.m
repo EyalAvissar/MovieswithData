@@ -10,6 +10,8 @@
 #import "MovieTableCell.h"
 #import "Movie.h"
 #import "DetailViewController.h"
+#import "MenuViewController.h"
+#import "CinemasViewController.h"
 
 
 static NSString *identifier;
@@ -18,6 +20,7 @@ static NSString *identifier;
 {
     NSArray *moviesArray;
     NSMutableArray *partialMoviesArray;
+    MenuViewController *menuController;
 }
 @end
 
@@ -124,20 +127,21 @@ static NSString *identifier;
 {
   @try
   {
-    [partialMoviesArray removeAllObjects];
+//    [partialMoviesArray removeAllObjects];
+      NSMutableArray *localMovies = [NSMutableArray new];
     NSString *name = @"";
     if ([searchText length] > 0)
     {
-        for (int i = 0; i < [moviesArray count] ; i++)
+        for (int i = 0; i < [partialMoviesArray count] ; i++)
         {
-            Movie *movie = moviesArray[i];
+            Movie *movie = partialMoviesArray[i];
             name = movie.name;
             if (name.length >= searchText.length)
             {
                 NSRange titleResultsRange = [name rangeOfString:searchText options:NSCaseInsensitiveSearch];
                 if (titleResultsRange.length > 0)
                 {
-                    [partialMoviesArray addObject:[movie copy]];
+                    [localMovies addObject:[movie copy]];
                 }
             }
         }
@@ -146,6 +150,7 @@ static NSString *identifier;
     {
         [partialMoviesArray addObjectsFromArray:moviesArray];
     }
+      partialMoviesArray = localMovies;
     [self.moviesTable reloadData];
 }
 @catch (NSException *exception) {
@@ -178,4 +183,30 @@ static NSString *identifier;
 }
 
 
+- (void)setPresentationStyle {
+    CATransition *transition = [MoviesManager setPresentationStyle];
+    [self.view.window.layer addAnimation:transition forKey:kCATransition];
+}
+
+- (IBAction)menuButtonTapped:(id)sender {
+    menuController = [[ApplicationManager sharedInstance].movieManager menu];
+    
+    menuController.dataSource = self;
+    menuController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    
+    [self setPresentationStyle];
+    [self presentViewController:menuController animated:true completion:nil];
+
+}
+
+- (void)didPressNumber:(long)pressed {
+    NSLog(@"pressed %lu", pressed);
+    
+    if (pressed == 1) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        CinemasViewController *cinemasVC = [storyBoard instantiateViewControllerWithIdentifier:@"Cinemas"];
+        [[self navigationController] pushViewController:cinemasVC animated:true];
+    }
+
+}
 @end

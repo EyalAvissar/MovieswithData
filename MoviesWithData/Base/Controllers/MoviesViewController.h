@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenuProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MoviesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@interface MoviesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, MenuProtocol>
 
 @property (weak, nonatomic) IBOutlet UITableView *moviesTable;
 
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (IBAction)showMovieGenre:(UIButton *)sender;
 - (IBAction)showAll:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UISearchBar *movieSearchBar;
+- (IBAction)menuButtonTapped:(id)sender;
 
 @end
 

@@ -22,7 +22,7 @@
     NSLog(@"movies json %@",JSON[@"movies"]);
     NSString * lastMoviesUpdate = [[ApplicationManager sharedInstance].movieManager lastMoviesUpdate];
     
-    NSString * currentMoviesUpdate = JSON[@"movies_last_update"]; //@"1";
+    NSString * currentMoviesUpdate = @"1";//JSON[@"movies_last_update"]; //@"1";
     
     if ([lastMoviesUpdate isEqual:currentMoviesUpdate]) {
         return;

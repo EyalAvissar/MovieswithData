@@ -11,6 +11,8 @@
 #import "ApplicationManager.h"
 #import "CinemaCollectionViewCell.h"
 #import <CoreData/CoreData.h>
+#import "CinemasViewController.h"
+#import "MoviesViewController.h"
 
 @interface DetailViewController ()
 {
@@ -18,6 +20,7 @@
     NSString *currentBaseUrl;
     NSDictionary *moviesDictionary;
     Movie *movie;
+    MenuViewController *menuController;
 }
 
 @end
@@ -48,16 +51,6 @@
                 [movies setValue:self->movie.promoUrl forKey:@"promoUrl"];
                 [movies setValue:data forKey:@"moviePoster"];
                 [movies setValue:self->movie.imageUrl forKey:@"imageUrl"];
-
-//                if ([movies valueForKey:@"moviePoster"] == nil) {
-//                    [movies setValue:self->movie.imageUrl forKey:@"imageUrl"];
-//                    NSLog(@"now: %@",[movies valueForKey:@"imageUrl"]);
-//
-//                } else {
-//                    NSLog(@"saved %@",[movies valueForKey:@"promoUrl"]);
-//                    NSLog(@"saved %@",[movies valueForKey:@"movieDescription"]);
-//
-//                }
                 
             }
             
@@ -107,16 +100,15 @@
     [self partialFieldsSet];
     
     [[[ApplicationManager sharedInstance] imageRequestManager] imageRequest:movie.imageUrl onCompletion:^(NSData * _Nonnull data) {
-        
+
         UIImage *posterImage = [UIImage imageWithData:data];
-        
+
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.ratingLabel.text = self->movie.rating;
             self->movie.moviePoster = posterImage;
             self.movieImageView.image = posterImage;
             [self setMovieEntity:data];
         });
-        
+
     }];
 }
 
@@ -128,10 +120,25 @@
 }
 
 - (void)serverRequestFailed:(BaseServerRequestResponse *)baseResponse baseRequest:(BaseRequest *)baseRequest {
-    
+    [self setReceivedMovieFields];
+
 }
 
+
 #pragma mark - IBAActions
+
+- (IBAction)menuButtonTapped:(id)sender {
+    menuController = [[ApplicationManager sharedInstance].movieManager menu];
+    
+    menuController.dataSource = self;
+    menuController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+
+    [MoviesManager setPresentationStyle];
+    
+    [self presentViewController:menuController animated:true completion:nil];
+    
+//    [[self navigationController] pushViewController:menuController animated:true];
+}
 
 - (IBAction)showPromo:(UIButton *)sender {
     NSString *urlString = self.promoURL.currentTitle;
@@ -153,6 +160,26 @@
     [cell configure: cinemaId];
     
     return cell;
+}
+
+- (void)didPressNumber:(long)pressed {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    NSLog(@"pressed %lu", pressed);
+    if (pressed == 0) {
+        MoviesViewController *moviesVC = [storyBoard instantiateViewControllerWithIdentifier:@"Movies"];
+        [[self navigationController] pushViewController:moviesVC animated:true];
+    }
+    
+    if (pressed == 1) {
+        CinemasViewController *cinemasVC = [storyBoard instantiateViewControllerWithIdentifier:@"Cinemas"];
+        [[self navigationController] pushViewController:cinemasVC animated:true];
+    }
+    
+//    [menuController dismissViewControllerAnimated:true completion:nil];
+    
+//    [[[self navigationController].viewControllers objectAtIndex:[[self navigationController].viewControllers count] - 2] dismissViewControllerAnimated:true completion:nil];
+    
 }
 
 @end

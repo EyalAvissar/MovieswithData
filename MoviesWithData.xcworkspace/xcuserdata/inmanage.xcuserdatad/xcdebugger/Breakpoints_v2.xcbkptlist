@@ -7,48 +7,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CA601D6A-6803-439D-8C88-2E32EDEC5EC6"
+            uuid = "FEABB8B1-AF53-4CF6-9C67-B02B859AEE5B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesWithData/Base/Responses/CinemasResponse.m"
+            filePath = "MoviesWithData/Base/Managers/RequestManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "-parseData:"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-sendRequestForRequest:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "45861D80-B68A-403A-AFC3-6BF88ABD6B6C"
+            uuid = "81055B6E-1F25-49EF-802F-B6234988073E"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoviesWithData/Base/Controllers/DetailViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-serverRequestSucceed:baseRequest:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E41BBA78-0C56-4DBF-A5CD-5269EC041ADE"
+            uuid = "CE245B77-F38E-4532-A074-5F439767A140"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesWithData/Base/Managers/StartUpManager.m"
+            filePath = "MoviesWithData/Base/Managers/RequestManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "-getCinemasFromDataBase"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-sendRequestForRequest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC80C5AE-49A5-4170-8B1B-9FF9AD7B52A8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoviesWithData/Base/Managers/RequestManager.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-sendRequestForRequest:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "147715A5-666A-4F27-91EB-053D9EB65507"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoviesWithData/Base/Controllers/DetailViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-setReceivedMovieFields"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

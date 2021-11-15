@@ -8,10 +8,11 @@
 #import <UIKit/UIKit.h>
 #import "Movie.h"
 #import "ServerRequestDoneProtocol.h"
+#import "MenuProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DetailViewController : UIViewController <ServerRequestDoneProtocol, UICollectionViewDataSource>
+@interface DetailViewController : UIViewController <ServerRequestDoneProtocol, UICollectionViewDataSource, MenuProtocol>
 
 @property NSString *movieId;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -25,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 - (IBAction)showPromo:(UIButton *)sender;
+- (IBAction)menuButtonTapped:(id)sender;
 
 @end
 

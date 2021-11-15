@@ -5,6 +5,7 @@
 //  Created by inmanage on 24/10/2021.
 //
 
+#import "NoInternetResponse.h"
 #import "RequestManager.h"
 #import "AFHTTPSessionManager.h"
 #import "ApplicationManager.h"
@@ -102,6 +103,11 @@ static const NSTimeInterval methodTimeout = 1.5;
         
         NSString* strPostUrl = extractedExpr;
         
+//        if ([strPostUrl containsString:@"http://mobile.inmanage.com/mobile-test/descriptionMovies/1009.json"]) {
+//            strPostUrl = @"http://mobile.inmanage.com/mobile-test/descriptionMovies/1000.json";
+//        }
+        
+        
         NSLog(@"cmd GET METHOD %@:\r\nparamaters: %@", strPostUrl, baseRequest.dictParams);
         NSLog(@"\n\n\n\n ❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️❇️" );
 
@@ -116,6 +122,7 @@ static const NSTimeInterval methodTimeout = 1.5;
             
             [self handleSuccess:baseRequest res:responseObject task:task];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"%@",error.description);
             [self handleFailure:baseRequest task:task error:error];
         }];
     }
@@ -124,8 +131,7 @@ static const NSTimeInterval methodTimeout = 1.5;
         
         if ([baseRequest.getMethodName isEqual: mMovieImage]) {
             strPostUrl = [NSString stringWithString: baseUrl];
-//            AFImageResponseSerializer* serializer = (AFImageResponseSerializer*)[UIImageView sharedImageDownloader].sessionManager.responseSerializer;
-//            serializer.acceptableContentTypes = [serializer.acceptableContentTypes setByAddingObject:@"image/jpg"];
+
             manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"image/jpeg"];
         }
         else {
@@ -148,22 +154,26 @@ static const NSTimeInterval methodTimeout = 1.5;
     NSLog(@"\n❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️ \n\n\n\n " );
     NSLog(@"cmd %@:\r\n failure: %@", baseRequest.getMethodName, error);
     NSLog(@"\n\n\n\n ❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️❗️" );
+
     
     if ([baseRequest canSendRequestAgain]) {
         
         NSTimeInterval requestAttemptDelay = ([ApplicationManager sharedInstance].appGD.methodTimeout > 0) ? [ApplicationManager sharedInstance].appGD.methodTimeout : methodTimeout;
         
-//        NSArray *arrHUDs = [MBProgressHUD allHUDsForView:[UIApplication sharedApplication].keyWindow];
         
-//        if (baseRequest.showHud && (!arrHUDs || arrHUDs.count == 0) && [UIApplication sharedApplication].keyWindow) {
-//
-////            [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-//        }
+        
         
         [self performSelector:@selector(sendRequestForRequest:) withObject:baseRequest afterDelay:requestAttemptDelay];
         
         
     } else {
+        
+        
+        BaseServerRequestResponse * baseRespone  = [[NoInternetResponse alloc]init];
+        
+        
+        
+        [baseRequest.callerObject serverRequestFailed:baseRespone baseRequest:baseRequest];
         
         for (int i = 0; i < serverRequestDoneDelegates.count; i++) {
             
@@ -174,7 +184,7 @@ static const NSTimeInterval methodTimeout = 1.5;
                 continue;
             }
             
-//            [caller serverRequestFailed:baseRespone baseRequest:baseRequest];
+            [caller serverRequestFailed:baseRespone baseRequest:baseRequest];
             
         }
         

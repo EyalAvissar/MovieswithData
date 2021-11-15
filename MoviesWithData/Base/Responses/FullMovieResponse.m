@@ -13,7 +13,7 @@
 
 -(void)parseData:(NSDictionary *)JSON {
     
-    NSString *movieId = JSON[@"id"];
+    NSString *movieId = JSON[@"id"];//@"1009"
     
     Movie *movie  = [[[ApplicationManager sharedInstance].movieManager moviesDictionary] objectForKey:movieId];
     

@@ -27,7 +27,7 @@ static NSString* requestName  = mDescriptionMovies;
 }
 
 - (BOOL)isGET {
-    return YES;
+    return true;
 }
 
 @end

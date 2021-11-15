@@ -7,6 +7,7 @@
 
 #import "BaseRequest.h"
 #import "Movie.h"
+#import "MenuViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(MoviesManager *)sharedInstance;
 +(UIManagedDocument *)prepareUIManagedDocumentFor:(NSURL *)url;
++(CATransition *)setPresentationStyle; //move to Utilities?
 
 @property NSArray *moviesArray;
 @property NSDictionary *moviesDictionary;
@@ -24,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSMutableArray *)sortMoviesByCategory:(NSString *) category;
 -(NSMutableArray *)sortBy:(NSString *)title arrayToSort: (NSArray *) array;
 -(NSURL *)getUrl:(NSString *)documentName;
-
+-(MenuViewController *)menu;
 @end
 
 NS_ASSUME_NONNULL_END
