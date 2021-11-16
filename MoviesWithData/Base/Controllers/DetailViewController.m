@@ -13,6 +13,7 @@
 #import <CoreData/CoreData.h>
 #import "CinemasViewController.h"
 #import "MoviesViewController.h"
+#import "MapController.h"
 
 @interface DetailViewController ()
 {
@@ -26,6 +27,30 @@
 @end
 
 @implementation DetailViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.cinemasCollectionView.dataSource = self;
+    [self.cinemasCollectionView registerNib:[UINib nibWithNibName:@"CinemaCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:[CinemaCollectionViewCell identifier]];
+    
+    moviesDictionary = [[ApplicationManager sharedInstance] movieManager].moviesDictionary;
+    
+    movie = moviesDictionary[self.movieId];
+    NSLog(@"%@", [movie movieDescription]);
+    
+    self.nameLabel.text = movie.name;
+    self.yearLabel.text = [NSString stringWithFormat:@"year: %@", movie.year];
+    self.categoryLabel.text = movie.category;
+    
+    if (![movie moviePoster]) {
+        [self movieDescription];
+    }
+    else {
+        self.movieImageView.image = movie.moviePoster;
+        [self partialFieldsSet];
+    }
+}
 
 - (void)setMovieEntity:(NSData *)data {
     
@@ -59,29 +84,6 @@
     }];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.cinemasCollectionView.dataSource = self;
-    [self.cinemasCollectionView registerNib:[UINib nibWithNibName:@"CinemaCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:[CinemaCollectionViewCell identifier]];
-    
-    moviesDictionary = [[ApplicationManager sharedInstance] movieManager].moviesDictionary;
-    
-    movie = moviesDictionary[self.movieId];
-    NSLog(@"%@", [movie movieDescription]);
-    
-    self.nameLabel.text = movie.name;
-    self.yearLabel.text = [NSString stringWithFormat:@"year: %@", movie.year];
-    self.categoryLabel.text = movie.category;
-    
-    if (![movie moviePoster]) {
-        [self movieDescription];
-    }
-    else {
-        self.movieImageView.image = movie.moviePoster;
-        [self partialFieldsSet];
-    }
-}
 
 -(void)movieDescription {
     FullMovieRequest *fullMoviesRequest = [[FullMovieRequest alloc] initWithCallerObject:self andParams:nil];
@@ -126,6 +128,12 @@
 
 
 #pragma mark - IBAActions
+
+- (IBAction)openMap:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+//    MapController *map
+}
 
 - (IBAction)menuButtonTapped:(id)sender {
     menuController = [[ApplicationManager sharedInstance].movieManager menu];

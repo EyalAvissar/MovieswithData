@@ -69,6 +69,8 @@
 		E8E27E232737DA9900609927 /* CinemaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27DF52737DA9800609927 /* CinemaCollectionViewCell.m */; };
 		E8E27E272737DAC200609927 /* IMAbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27E252737DAC200609927 /* IMAbstractViewController.m */; };
 		E8E27E2F273801B600609927 /* MoviesWithData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D672737D3D800609927 /* MoviesWithData.xcdatamodeld */; };
+		E8E9258D2743D9E200394DAE /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E9258C2743D9E200394DAE /* MapPin.m */; };
+		E8E925902743DA4500394DAE /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E9258E2743DA4500394DAE /* MapController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +214,10 @@
 		E8E27DF92737DA9800609927 /* UserAccountManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAccountManagerProtocol.h; sourceTree = "<group>"; };
 		E8E27E252737DAC200609927 /* IMAbstractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAbstractViewController.m; sourceTree = "<group>"; };
 		E8E27E262737DAC200609927 /* IMAbstractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAbstractViewController.h; sourceTree = "<group>"; };
+		E8E9258B2743D9E200394DAE /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
+		E8E9258C2743D9E200394DAE /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
+		E8E9258E2743DA4500394DAE /* MapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
+		E8E9258F2743DA4500394DAE /* MapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
 		EFE06388795A811C31FE4446 /* Pods_MoviesWithData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesWithData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -448,6 +454,10 @@
 		E8E27DE72737DA9800609927 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E8E9258B2743D9E200394DAE /* MapPin.h */,
+				E8E9258C2743D9E200394DAE /* MapPin.m */,
+				E8E9258F2743DA4500394DAE /* MapController.h */,
+				E8E9258E2743DA4500394DAE /* MapController.m */,
 				E8E27DF22737DA9800609927 /* BannerViewController.h */,
 				E8E27DEB2737DA9800609927 /* BannerViewController.m */,
 				E8E27DED2737DA9800609927 /* CinemaCollectionViewCell.h */,
@@ -737,8 +747,10 @@
 				E8E27E2F273801B600609927 /* MoviesWithData.xcdatamodeld in Sources */,
 				E8E27E092737DA9900609927 /* BaseServerRequestResponse.m in Sources */,
 				E8E27E0E2737DA9900609927 /* Cinema.m in Sources */,
+				E8E9258D2743D9E200394DAE /* MapPin.m in Sources */,
 				E8E27E022737DA9900609927 /* BaseGeneralDeclarationResponse.m in Sources */,
 				E8E27E002737DA9900609927 /* ClearSessionResponse.m in Sources */,
+				E8E925902743DA4500394DAE /* MapController.m in Sources */,
 				E8E27DFD2737DA9900609927 /* MoviesManager.m in Sources */,
 				E8E27E122737DA9900609927 /* MoviesRequest.m in Sources */,
 				E8E27E272737DAC200609927 /* IMAbstractViewController.m in Sources */,

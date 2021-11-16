@@ -412,11 +412,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PaC-tm-mE1">
-                        <barButtonItem key="rightBarButtonItem" title="אפשרויות" id="7OD-A0-vPf">
-                            <connections>
-                                <action selector="menuButtonTapped:" destination="g1T-dY-Tyw" id="h4i-42-h4i"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="אפשרויות" id="7OD-A0-vPf">
+                                <connections>
+                                    <action selector="menuButtonTapped:" destination="g1T-dY-Tyw" id="h4i-42-h4i"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="מעבר למפה" id="PWi-Ss-CEM" userLabel="מעבר למפה"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="categoryLabel" destination="vEb-9p-oBb" id="Bw4-b4-gwZ"/>
@@ -476,6 +479,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S3C-HD-17E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5475" y="52"/>
+        </scene>
+        <!--Map Controller-->
+        <scene sceneID="QX7-Ga-8UY">
+            <objects>
+                <viewController id="Cpd-uw-bhe" customClass="MapController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YnD-Wz-0PO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="x6l-JX-E9u">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dJL-GI-kOt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="x6l-JX-E9u" firstAttribute="leading" secondItem="dJL-GI-kOt" secondAttribute="leading" id="3JC-g4-Nbt"/>
+                            <constraint firstItem="dJL-GI-kOt" firstAttribute="trailing" secondItem="x6l-JX-E9u" secondAttribute="trailing" id="A7E-uc-We3"/>
+                            <constraint firstItem="x6l-JX-E9u" firstAttribute="top" secondItem="dJL-GI-kOt" secondAttribute="top" id="H83-XV-wsY"/>
+                            <constraint firstItem="dJL-GI-kOt" firstAttribute="bottom" secondItem="x6l-JX-E9u" secondAttribute="bottom" id="KtE-x0-Ahq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="x6l-JX-E9u" id="4aU-BU-g35"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cKG-0i-LdV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6176" y="68"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="uS3-15-4Mf">

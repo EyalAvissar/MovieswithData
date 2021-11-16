@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 - (IBAction)showPromo:(UIButton *)sender;
 - (IBAction)menuButtonTapped:(id)sender;
+- (IBAction)openMap:(id)sender;
 
 @end
 
