@@ -9,6 +9,9 @@
 #import "MoviesViewController.h"
 #import "MoviesManager.h"
 #import "ApplicationManager.h"
+#import "Cinema.h"
+#import "CinemaTableCell.h"
+#import "DetailViewController.h"
 
 @interface CinemasViewController ()
 
@@ -22,17 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    UINavigationBar* navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 80)];
-//
-//    UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:@"Back"];
-
-//    UIBarButtonItem *menu = [[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped)];
-//
-//    [[self navigationItem] setRightBarButtonItem:menu];
-//    navItem.rightBarButtonItem = menu;
-
-//    [navbar setItems:@[navItem]];
-//    [self.view addSubview:navbar];
+    
+    
+    [self.cinemasTable registerNib:[UINib nibWithNibName:@"CinemaTableCell" bundle:nil] forCellReuseIdentifier:[CinemaTableCell identifier]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -71,6 +66,18 @@
     }
 }
 
+- (void)didPressMovie:(long)pressed :(NSString *)at {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    DetailViewController *detailController = [storyBoard instantiateViewControllerWithIdentifier:@"detailController"];
+    
+    detailController.movieId = [NSString stringWithFormat:@"%li", (long)pressed];
+    
+    detailController.cinemaId = at;
+    
+    [self.navigationController pushViewController:detailController animated:true];
+}
+
 - (void)setPresentationStyle {
     CATransition *transition = [MoviesManager setPresentationStyle];
     menuController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -88,5 +95,30 @@
 
     [self presentViewController:menuController animated:true completion:nil];
 }
+
+#pragma mark- TableView DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[[ApplicationManager sharedInstance].movieManager cinemasDictionary] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CinemaTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CinemaCell" forIndexPath:indexPath];
+    
+    cell.dataSource = self;
+    
+    [cell configureCell:indexPath.row];
+    
+    return cell;
+}
+
+#pragma mark- TableView Delegate
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    CinemaTableCell *cellTapped = [tableView cellForRowAtIndexPath:indexPath];
+//    [cellTapped showFullMovieDescription:1];
+//
+//}
 
 @end

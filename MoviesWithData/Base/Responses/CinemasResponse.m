@@ -15,7 +15,7 @@
     NSMutableDictionary *cinemaDictionary = [[NSMutableDictionary alloc] init];
     
     NSString *lastCinemasUpdate = [[ApplicationManager sharedInstance].movieManager lastCinemasUpdate];
-    NSString *currentCinemasUpdate =  JSON[@"cinemas_last_update"];//@"1";
+    NSString *currentCinemasUpdate = @"1"; //JSON[@"cinemas_last_update"];//@"1";
 
     
     if ([lastCinemasUpdate isEqual:currentCinemasUpdate]) {
@@ -26,32 +26,39 @@
     
     [self cinemasUpdateNeeded];
     
-    for (NSDictionary *jsonCinema in JSON[@"cinemas"]) {
+    Cinema *cinema = [Cinema new];
+    NSMutableArray *moviesArray = [NSMutableArray new];
 
-        Cinema *cinema = [Cinema new];
+    for (NSDictionary *jsonCinema in JSON[@"cinemas"]) {
         cinema.name = jsonCinema[@"name"];
         cinema.cinemaId = jsonCinema[@"id"];
         cinema.latitudeStr = jsonCinema[@"lat"];
         cinema.latitudeStr = jsonCinema[@"lng"];
+        
 
+        for (Movie *movie in [[ApplicationManager sharedInstance].movieManager moviesArray]) {
+
+            long tempId = [cinema.cinemaId longLongValue];
+            NSNumber *cinemaID = [NSNumber numberWithLong:tempId];
+            
+            if ([movie.cinemasId containsObject: cinemaID]) {
+                [moviesArray addObject:movie.movieId];
+            }
+        }
+        cinema.movieIdArray = moviesArray;
         [cinemaDictionary setObject:cinema forKey:cinema.cinemaId];
+        cinema = [Cinema new];
+        moviesArray = [NSMutableArray new];
     }
 
     [[ApplicationManager sharedInstance].movieManager setCinemasDictionary:cinemaDictionary];
 }
 
 -(Boolean)cinemasUpdateNeeded {
-//    NSString *userCinemasUpdate = [[NSUserDefaults standardUserDefaults] valueForKey:@"userCinemasUpdate"];
-//
-//    if ([userCinemasUpdate isEqual:currentCinemasUpdate]) {
-//        return false;
-//    }
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSString *documentName = @"cinemasList";
-    
-//    NSURL *documentsDirectory = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
     
     NSURL *url = [[ApplicationManager sharedInstance].movieManager getUrl:documentName];//[documentsDirectory URLByAppendingPathComponent:documentName];
     

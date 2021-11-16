@@ -7,81 +7,81 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FEABB8B1-AF53-4CF6-9C67-B02B859AEE5B"
+            uuid = "DF4B71C1-9FCB-4D3A-B234-B455128BE154"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesWithData/Base/Managers/RequestManager.m"
+            filePath = "MoviesWithData/Base/Responses/CinemasResponse.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-sendRequestForRequest:"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-parseData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "81055B6E-1F25-49EF-802F-B6234988073E"
+            uuid = "7FA9A711-9668-4486-98AC-7508EF274B38"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesWithData/Base/Controllers/DetailViewController.m"
+            filePath = "MoviesWithData/Base/Responses/CinemasResponse.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-serverRequestSucceed:baseRequest:"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-parseData:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CE245B77-F38E-4532-A074-5F439767A140"
+            uuid = "05D12C06-87D6-4AD0-9244-69468B93CCC8"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesWithData/Base/Managers/RequestManager.m"
+            filePath = "MoviesWithData/Base/Managers/StartUpManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "-sendRequestForRequest:"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "-cinemasDocumentIsReady"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BC80C5AE-49A5-4170-8B1B-9FF9AD7B52A8"
+            uuid = "FE43CD0C-56CE-41C9-93B0-8E7413A558EE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesWithData/Base/Managers/RequestManager.m"
+            filePath = "MoviesWithData/Base/Controllers/CinemaTableCell.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-sendRequestForRequest:"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-awakeFromNib"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "147715A5-666A-4F27-91EB-053D9EB65507"
+            uuid = "FA78FD10-8692-406F-84CC-49A4875EFEFF"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesWithData/Base/Controllers/DetailViewController.m"
+            filePath = "MoviesWithData/Base/Controllers/CinemasViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "-setReceivedMovieFields"
-            landmarkType = "7">
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "CinemasViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

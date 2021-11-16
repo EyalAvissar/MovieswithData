@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSString *name;
 @property NSString *latitudeStr;
 @property NSString *longitudeStr;
+@property NSMutableArray *movieIdArray;
 
 @end
 

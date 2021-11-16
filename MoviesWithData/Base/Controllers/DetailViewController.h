@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DetailViewController : UIViewController <ServerRequestDoneProtocol, UICollectionViewDataSource, MenuProtocol>
 
 @property NSString *movieId;
+@property NSString *cinemaId;
+
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *yearLabel;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;

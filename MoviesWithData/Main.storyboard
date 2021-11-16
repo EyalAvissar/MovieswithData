@@ -444,6 +444,16 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Nf1-SI-jsy">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CinemaCell" id="krq-aj-r3p">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="krq-aj-r3p" id="ZgK-Rb-QIQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="qbP-Th-OMy" id="5HW-wS-zXo"/>
                                     <outlet property="delegate" destination="qbP-Th-OMy" id="I6v-RD-eQw"/>
@@ -451,7 +461,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="K0s-Ed-emM"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Nf1-SI-jsy" firstAttribute="leading" secondItem="K0s-Ed-emM" secondAttribute="leading" id="0zR-pX-gW5"/>
                             <constraint firstItem="Nf1-SI-jsy" firstAttribute="top" secondItem="K0s-Ed-emM" secondAttribute="top" id="UWq-Xg-CnN"/>
@@ -460,7 +470,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cinemasTble" destination="Nf1-SI-jsy" id="77G-IT-PoV"/>
+                        <outlet property="cinemasTable" destination="Nf1-SI-jsy" id="77G-IT-PoV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S3C-HD-17E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -519,9 +529,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

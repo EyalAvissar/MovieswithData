@@ -21,6 +21,8 @@
     Cinema *cinema = cinemaDictionary[cinemaNumber ];
     
     self.cinemaLabel.text = cinema.name;
+//    self.cinemaLabel.textAlignment = NSTextAlignmentJustified;
+    
     NSLog(@"%@, %@",cinema.name, cinema.cinemaId);
 }
 

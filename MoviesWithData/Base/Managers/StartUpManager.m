@@ -216,7 +216,6 @@ static StartUpManager *_sharedInstance = nil;
 
 -(void)cinemasDocumentIsReady {
     if (cinemasDocument.documentState == UIDocumentStateNormal) {
-        NSLog(@"cinemasDocument is ready. 1");
 
         NSManagedObjectContext *context = cinemasDocument.managedObjectContext;
         
@@ -234,7 +233,7 @@ static StartUpManager *_sharedInstance = nil;
                 [cinema setValue:received.latitudeStr forKey:@"latitudeStr"];
                 [cinema setValue:received.longitudeStr forKey:@"longitudeStr"];
 
-
+                [cinema setValue:received.movieIdArray forKey:@"movieIdArray"];
                 NSLog(@"");
         }
         

@@ -12,6 +12,9 @@
 
 -(void)didPressNumber:(long )pressed;
 
+@optional
+-(void)didPressMovie:(long)pressed :(NSString *)at;
+
 @end
 
 #endif /* MenuProtocol_h */

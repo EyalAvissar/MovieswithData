@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CinemasViewController : UIViewController <MenuProtocol>
+@interface CinemasViewController : UIViewController <MenuProtocol, UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *cinemasTble;
+@property (weak, nonatomic) IBOutlet UITableView *cinemasTable;
 
 @end
 

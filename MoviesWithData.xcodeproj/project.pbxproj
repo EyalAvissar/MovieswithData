@@ -13,6 +13,8 @@
 		E80FFCEC273BD8C9006CB418 /* MovieHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E80FFCEB273BD8C9006CB418 /* MovieHelper.m */; };
 		E878BF86274240060015D519 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E878BF85274240060015D519 /* MenuViewController.m */; };
 		E878BF89274253B20015D519 /* CinemasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E878BF88274253B20015D519 /* CinemasViewController.m */; };
+		E878BF8E2742B1B20015D519 /* CinemaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E878BF8C2742B1B20015D519 /* CinemaTableCell.m */; };
+		E878BF8F2742B1B20015D519 /* CinemaTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E878BF8D2742B1B20015D519 /* CinemaTableCell.xib */; };
 		E8BA713A2741199B009E408F /* NoInternetResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA71392741199B009E408F /* NoInternetResponse.m */; };
 		E8E27D5D2737D3D800609927 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D5C2737D3D800609927 /* AppDelegate.m */; };
 		E8E27D602737D3D800609927 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D5F2737D3D800609927 /* SceneDelegate.m */; };
@@ -102,6 +104,9 @@
 		E878BF87274253B20015D519 /* CinemasViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CinemasViewController.h; sourceTree = "<group>"; };
 		E878BF88274253B20015D519 /* CinemasViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CinemasViewController.m; sourceTree = "<group>"; };
 		E878BF8A2742759A0015D519 /* MenuProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuProtocol.h; sourceTree = "<group>"; };
+		E878BF8B2742B1B20015D519 /* CinemaTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CinemaTableCell.h; sourceTree = "<group>"; };
+		E878BF8C2742B1B20015D519 /* CinemaTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CinemaTableCell.m; sourceTree = "<group>"; };
+		E878BF8D2742B1B20015D519 /* CinemaTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CinemaTableCell.xib; sourceTree = "<group>"; };
 		E8BA71382741199B009E408F /* NoInternetResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetResponse.h; sourceTree = "<group>"; };
 		E8BA71392741199B009E408F /* NoInternetResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetResponse.m; sourceTree = "<group>"; };
 		E8E27D582737D3D800609927 /* MoviesWithData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesWithData.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -461,6 +466,9 @@
 				E8E27DE82737DA9800609927 /* MovieTableCell.h */,
 				E8E27DF02737DA9800609927 /* MovieTableCell.m */,
 				E8E27DEC2737DA9800609927 /* MovieTableCell.xib */,
+				E878BF8B2742B1B20015D519 /* CinemaTableCell.h */,
+				E878BF8C2742B1B20015D519 /* CinemaTableCell.m */,
+				E878BF8D2742B1B20015D519 /* CinemaTableCell.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -594,6 +602,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8E27D962737DA1700609927 /* LaunchScreen.storyboard in Resources */,
+				E878BF8F2742B1B20015D519 /* CinemaTableCell.xib in Resources */,
 				E8E27D6B2737D3DA00609927 /* Assets.xcassets in Resources */,
 				E8E27E202737DA9900609927 /* CinemaCollectionViewCell.xib in Resources */,
 				E8E27D952737DA1700609927 /* Main.storyboard in Resources */,
@@ -742,6 +751,7 @@
 				E8E27E162737DA9900609927 /* BaseRequest.m in Sources */,
 				E8E27DFA2737DA9900609927 /* RequestManager.m in Sources */,
 				E8E27E232737DA9900609927 /* CinemaCollectionViewCell.m in Sources */,
+				E878BF8E2742B1B20015D519 /* CinemaTableCell.m in Sources */,
 				E8E27E012737DA9900609927 /* FullMovieResponse.m in Sources */,
 				E8E27E222737DA9900609927 /* MoviesViewController.m in Sources */,
 				E8E27E1D2737DA9900609927 /* BannerViewController.m in Sources */,

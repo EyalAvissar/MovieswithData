@@ -157,6 +157,11 @@
     CinemaCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[CinemaCollectionViewCell identifier] forIndexPath:indexPath];
     
     NSString *cinemaId = [NSString stringWithFormat:@"%@", [movie cinemasId][indexPath.row]];
+    
+    if ([cinemaId isEqual:self.cinemaId]) {
+        cell.backgroundColor = [UIColor blueColor];
+    }
+    
     [cell configure: cinemaId];
     
     return cell;
