@@ -4,37 +4,56 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CinemaCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joK-xp-PNg">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rsl-93-kON">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="joK-xp-PNg">
+                                <rect key="frame" x="12" y="7.5" width="126" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="joK-xp-PNg" firstAttribute="centerY" secondItem="Rsl-93-kON" secondAttribute="centerY" id="JaF-Ce-jK0"/>
+                            <constraint firstAttribute="trailing" secondItem="joK-xp-PNg" secondAttribute="trailing" constant="12" id="Z8W-jh-0cT"/>
+                            <constraint firstItem="joK-xp-PNg" firstAttribute="leading" secondItem="Rsl-93-kON" secondAttribute="leading" constant="12" id="f6f-aa-abK"/>
+                            <constraint firstItem="joK-xp-PNg" firstAttribute="centerX" secondItem="Rsl-93-kON" secondAttribute="centerX" id="nUi-BS-SvY"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <constraints>
-                <constraint firstItem="joK-xp-PNg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4ih-yU-muU"/>
-                <constraint firstAttribute="trailing" secondItem="joK-xp-PNg" secondAttribute="trailing" id="VQ0-UN-MtX"/>
-                <constraint firstItem="joK-xp-PNg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bDT-8F-BYx"/>
-                <constraint firstAttribute="bottom" secondItem="joK-xp-PNg" secondAttribute="bottom" id="jme-XD-t9l"/>
+                <constraint firstAttribute="trailing" secondItem="Rsl-93-kON" secondAttribute="trailing" id="5x7-3f-E3O"/>
+                <constraint firstItem="Rsl-93-kON" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CR1-Wx-ZqM"/>
+                <constraint firstItem="Rsl-93-kON" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Z4Q-UG-iz3"/>
+                <constraint firstAttribute="bottom" secondItem="Rsl-93-kON" secondAttribute="bottom" id="ZaA-vu-war"/>
             </constraints>
+            <size key="customSize" width="150" height="35"/>
             <connections>
                 <outlet property="cinemaLabel" destination="joK-xp-PNg" id="eIX-22-al9"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="94.419642857142847"/>
+            <point key="canvasLocation" x="210.1449275362319" y="89.397321428571431"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
