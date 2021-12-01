@@ -126,20 +126,27 @@ static NSString *identifier;
 
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    Boolean didCallShowAll;
   @try
   {
-//    [partialMoviesArray removeAllObjects];
-      NSMutableArray *localMovies = [NSMutableArray new];
+    NSMutableArray *localMovies = [NSMutableArray new];
     NSString *name = @"";
     if ([searchText length] > 0)
     {
-        for (int i = 0; i < [partialMoviesArray count] ; i++)
+        for (int i = 0; i < [moviesArray count] ; i++)
         {
-            Movie *movie = partialMoviesArray[i];
+            Movie *movie = moviesArray[i];
             name = movie.name;
             if (name.length >= searchText.length)
             {
                 NSRange titleResultsRange = [name rangeOfString:searchText options:NSCaseInsensitiveSearch];
+                
+                if ([searchText length] == 0) {
+                    localMovies = nil;
+                    [localMovies arrayByAddingObjectsFromArray:moviesArray];
+                    break;
+                }
+                
                 if (titleResultsRange.length > 0)
                 {
                     [localMovies addObject:[movie copy]];
@@ -149,10 +156,16 @@ static NSString *identifier;
     }
     else
     {
-        [partialMoviesArray addObjectsFromArray:moviesArray];
+        partialMoviesArray = [NSMutableArray arrayWithArray:moviesArray];
+        [self showAll:nil];
+        didCallShowAll = true;
     }
-      partialMoviesArray = localMovies;
-    [self.moviesTable reloadData];
+      
+      if (!didCallShowAll) {
+          partialMoviesArray = localMovies;
+        [self.moviesTable reloadData];
+      }
+      
 }
 @catch (NSException *exception) {
 }
