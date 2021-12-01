@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    self.detailScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - self.descriptionTextView.frame.size.height + self.descriptionTextView.contentSize.height);
     self.cinemasCollectionView.dataSource = self;
     [self.cinemasCollectionView registerNib:[UINib nibWithNibName:@"CinemaCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:[CinemaCollectionViewCell identifier]];
     
@@ -50,6 +51,18 @@
         self.movieImageView.image = movie.moviePoster;
         [self partialFieldsSet];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.detailScrollView.contentSize = CGSizeMake(self.view.frame.size.width, (CGFloat)(self.view.frame.size.height - self.descriptionTextView.frame.size.height + self.descriptionTextView.contentSize.height + 50));
+    
+    self.detailScrollView.bounces = false;
+//    self.detailScrollView.scrollEnabled = true;
+    NSLog(@"y origin %f", self.descriptionTextView.bounds.origin.y);
+    NSLog(@"height %f", self.view.frame.size.height);
+
 }
 
 - (void)setMovieEntity:(NSData *)data {
@@ -132,7 +145,11 @@
 - (IBAction)openMap:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-//    MapController *map
+    MapController *mapController = [storyBoard instantiateViewControllerWithIdentifier:@"Map"];
+    
+    mapController.locations = movie.cinemasId;
+    
+    [self.navigationController pushViewController:mapController animated:true];
 }
 
 - (IBAction)menuButtonTapped:(id)sender {
@@ -145,7 +162,6 @@
     
     [self presentViewController:menuController animated:true completion:nil];
     
-//    [[self navigationController] pushViewController:menuController animated:true];
 }
 
 - (IBAction)showPromo:(UIButton *)sender {
@@ -166,8 +182,9 @@
     
     NSString *cinemaId = [NSString stringWithFormat:@"%@", [movie cinemasId][indexPath.row]];
     
+    NSLog(@"cinemaId %@, self %@", cinemaId, self.cinemaId);
     if ([cinemaId isEqual:self.cinemaId]) {
-        cell.backgroundColor = [UIColor blueColor];
+        cell.cinemaLabel.backgroundColor = [UIColor blueColor];
     }
     
     [cell configure: cinemaId];

@@ -25,8 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     [self.cinemasTable registerNib:[UINib nibWithNibName:@"CinemaTableCell" bundle:nil] forCellReuseIdentifier:[CinemaTableCell identifier]];
 }
 
@@ -34,16 +32,11 @@
 //    UIBarButtonItem *menu = [[UIBarButtonItem alloc] initWithTitle:@"xyz" style:UIBarButtonItemStyleDone target:self action:@selector(xyz)];
 
     UINavigationBar *navigationBar = [[self navigationController] navigationBar];
-//    UIBarButtonItem *menu = [[UIBarButtonItem alloc] initWithImage:nil style:UIBarButtonItemStylePlain target:self action:@selector(menuButtonTapped)];
-//    [[menu setImage:UIImage] ]
-//    [[self navigationItem] setRightBarButtonItem:menu];
-//    [[self navigationItem] setRightBarButtonItems:@[menu]];
-//    [self.navigationController.navigationItem setRightBarButtonItem:menu];
     
     float height = navigationBar.bounds.size.height;
     float x = navigationBar.bounds.size.width - 50;
     UIView *blueView = [[UIView alloc] initWithFrame:CGRectMake(x, 0, 40, height)];
-    blueView.backgroundColor = [UIColor clearColor];
+
     UIButton *menuButton =  [UIButton systemButtonWithImage:[UIImage imageNamed:@"person"] target:self action:@selector(menuButtonTapped)];
     [menuButton setTitle:@"אפשרויות" forState:UIControlStateNormal];
         
@@ -91,8 +84,6 @@
     menuController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 
     [self setPresentationStyle];
-    
-
     [self presentViewController:menuController animated:true completion:nil];
 }
 
@@ -111,14 +102,5 @@
     
     return cell;
 }
-
-#pragma mark- TableView Delegate
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    CinemaTableCell *cellTapped = [tableView cellForRowAtIndexPath:indexPath];
-//    [cellTapped showFullMovieDescription:1];
-//
-//}
 
 @end

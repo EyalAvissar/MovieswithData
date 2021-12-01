@@ -12,6 +12,7 @@
 #import "DetailViewController.h"
 #import "MenuViewController.h"
 #import "CinemasViewController.h"
+#import "NewCinemaViewController.h"
 
 
 static NSString *identifier;
@@ -204,8 +205,8 @@ static NSString *identifier;
     
     if (pressed == 1) {
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        CinemasViewController *cinemasVC = [storyBoard instantiateViewControllerWithIdentifier:@"Cinemas"];
-        [[self navigationController] pushViewController:cinemasVC animated:true];
+        NewCinemaViewController *testVC = [storyBoard instantiateViewControllerWithIdentifier:@"Cinemas"];
+        [[self navigationController] pushViewController:testVC animated:true];
     }
 
 }

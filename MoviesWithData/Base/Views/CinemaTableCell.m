@@ -27,8 +27,6 @@
     
     scroll.pagingEnabled = YES;
     scroll.scrollEnabled = YES;
-//    [scroll setBackgroundColor:[UIColor redColor]];
-
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

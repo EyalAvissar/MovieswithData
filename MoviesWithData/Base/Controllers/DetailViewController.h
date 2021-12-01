@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSString *movieId;
 @property NSString *cinemaId;
+@property (weak, nonatomic) IBOutlet UIScrollView *detailScrollView;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *yearLabel;

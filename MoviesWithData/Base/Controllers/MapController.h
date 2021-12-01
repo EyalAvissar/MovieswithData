@@ -7,7 +7,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Mapkit/Mapkit.h>
-#import "MapPin.h"
 
 @interface MapController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
     

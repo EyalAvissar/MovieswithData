@@ -33,7 +33,7 @@
         cinema.name = jsonCinema[@"name"];
         cinema.cinemaId = jsonCinema[@"id"];
         cinema.latitudeStr = jsonCinema[@"lat"];
-        cinema.latitudeStr = jsonCinema[@"lng"];
+        cinema.longitudeStr = jsonCinema[@"lng"];
         
 
         for (Movie *movie in [[ApplicationManager sharedInstance].movieManager moviesArray]) {
