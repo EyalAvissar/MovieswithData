@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Mapkit/Mapkit.h>
+@class Movie;
 
 @interface MapController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
     
@@ -14,6 +15,8 @@
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+@property Movie *movie;
 @property NSArray *locations;
 
 @end

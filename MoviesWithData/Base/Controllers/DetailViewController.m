@@ -148,6 +148,7 @@
     MapController *mapController = [storyBoard instantiateViewControllerWithIdentifier:@"Map"];
     
     mapController.locations = movie.cinemasId;
+    mapController.movie = movie;
     
     [self.navigationController pushViewController:mapController animated:true];
 }
