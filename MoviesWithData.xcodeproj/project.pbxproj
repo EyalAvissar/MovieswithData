@@ -17,6 +17,7 @@
 		E878BF8E2742B1B20015D519 /* CinemaTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E878BF8C2742B1B20015D519 /* CinemaTableCell.m */; };
 		E878BF8F2742B1B20015D519 /* CinemaTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E878BF8D2742B1B20015D519 /* CinemaTableCell.xib */; };
 		E8BA713A2741199B009E408F /* NoInternetResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA71392741199B009E408F /* NoInternetResponse.m */; };
+		E8E074CF2758E3BC0082D7A4 /* ArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E074CE2758E3BC0082D7A4 /* ArrayTransformer.m */; };
 		E8E27D5D2737D3D800609927 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D5C2737D3D800609927 /* AppDelegate.m */; };
 		E8E27D602737D3D800609927 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E27D5F2737D3D800609927 /* SceneDelegate.m */; };
 		E8E27D6B2737D3DA00609927 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8E27D6A2737D3DA00609927 /* Assets.xcassets */; };
@@ -118,6 +119,8 @@
 		E878BF8D2742B1B20015D519 /* CinemaTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CinemaTableCell.xib; sourceTree = "<group>"; };
 		E8BA71382741199B009E408F /* NoInternetResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoInternetResponse.h; sourceTree = "<group>"; };
 		E8BA71392741199B009E408F /* NoInternetResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoInternetResponse.m; sourceTree = "<group>"; };
+		E8E074CD2758E3BC0082D7A4 /* ArrayTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArrayTransformer.h; sourceTree = "<group>"; };
+		E8E074CE2758E3BC0082D7A4 /* ArrayTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArrayTransformer.m; sourceTree = "<group>"; };
 		E8E27D582737D3D800609927 /* MoviesWithData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesWithData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E27D5B2737D3D800609927 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E8E27D5C2737D3D800609927 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -508,6 +511,8 @@
 				E878BF85274240060015D519 /* MenuViewController.m */,
 				E8E27DEA2737DA9800609927 /* MoviesViewController.h */,
 				E8E27DF32737DA9800609927 /* MoviesViewController.m */,
+				E8E074CD2758E3BC0082D7A4 /* ArrayTransformer.h */,
+				E8E074CE2758E3BC0082D7A4 /* ArrayTransformer.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -806,6 +811,7 @@
 				E8E27DFF2737DA9900609927 /* ApplicationManager.m in Sources */,
 				E8E27E1F2737DA9900609927 /* DetailViewController.m in Sources */,
 				E8E27DFE2737DA9900609927 /* StartUpManager.m in Sources */,
+				E8E074CF2758E3BC0082D7A4 /* ArrayTransformer.m in Sources */,
 				E8E27D5D2737D3D800609927 /* AppDelegate.m in Sources */,
 				E8E8CF03274A237D00918995 /* NewCinemaTableViewCell.m in Sources */,
 				E8E27E152737DA9900609927 /* ApplicationTokenRequest.m in Sources */,

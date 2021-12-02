@@ -4,12 +4,12 @@
         <attribute name="cinemaId" optional="YES" attributeType="String"/>
         <attribute name="latitudeStr" optional="YES" attributeType="String"/>
         <attribute name="longitudeStr" optional="YES" attributeType="String"/>
-        <attribute name="movieIdArray" optional="YES" attributeType="Transformable"/>
+        <attribute name="movieIdArray" optional="YES" attributeType="Transformable" valueTransformerName="ArrayTransformer"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <entity name="MovieEntity" representedClassName="MovieEntity" syncable="YES">
         <attribute name="category" optional="YES" attributeType="String"/>
-        <attribute name="cinemasId" optional="YES" attributeType="Transformable"/>
+        <attribute name="cinemasId" optional="YES" attributeType="Transformable" valueTransformerName="ArrayTransformer"/>
         <attribute name="imageUrl" optional="YES" attributeType="String"/>
         <attribute name="movieDescription" optional="YES" attributeType="String"/>
         <attribute name="movieId" optional="YES" attributeType="String"/>
